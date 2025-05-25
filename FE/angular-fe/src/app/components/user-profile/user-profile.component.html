@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>{{_data.customer.info.name}}</h2>
+<mat-dialog-content>
+  <div class="card">
+    <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+  </div>
+  <div>
+    <div class="info-item">
+      <span>Email:</span> {{_data.customer.info.email}}
+    </div>
+    <div class="info-item">
+      <span>Occupation:</span> {{_data.customer.occupation}}
+    </div>
+    <div class="info-item">
+      <span>Balance:</span> {{_data.customer.balance | money}}
+    </div>
+    <div class="info-item">
+      <span>Income:</span> {{_data.customer.income | money}}
+    </div>
+    <div class="info-item">
+      <span>Status:</span> {{_data.customer.status}}
+    </div>
+    <div class="info-item">
+      <span>Credit score:</span> {{_data.CreditScore}}
+    </div>
+  </div>
+
+</mat-dialog-content>

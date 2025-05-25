@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="table-helpers">
+  <div style="display: flex; justify-content: flex-start">
+    <div class="filter item">
+      <i class="pi pi-filter" style="color: #000;font-size: 1rem"></i>
+      Filter
+    </div>
+    <div class="add-user item">
+      <i class="pi pi-plus" style="color: #000;font-size: 1rem">
+      </i>
+      User
+    </div>
+  </div>
+  <div class="search item">
+    <i class="pi pi-search" style="color: #000;font-size: 1rem"></i>
+    Search
+  </div>
+</div>
+<div class="card list">
+  <p-table
+    [paginator]="true"
+    [rows]="10"
+    [value]="customers" dataKey="id"
+    [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+
+        </th>
+        <th pSortableColumn="quantity" style="width:10%; display: flex; background: #fff">
+          Tentative
+          <p-sortIcon/>
+        </th>
+        <th style="width:25% ">
+          Customer
+        </th>
+        <th style="width:15%">
+          Occupation
+        </th>
+        <th style="width:15%">
+          Balance
+        </th>
+        <th style="width:15%">
+          Income
+        </th>
+        <th style="width:20%">
+          Exit Risk
+        </th>
+        <th>
+
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer let-editing="editing">
+      <tr>
+        <td (click)="updateCustomer(customer)">
+          <i class="pi pi-undo" style="font-size: 1.15rem"></i>
+        </td>
+        <td>
+          {{ customer.Tenure }}
+        </td>
+        <td  (click)="openModal(customer)" style="display: flex; flex-direction: column;">
+          {{ customer.info.name }}
+          <span style="font-size: 11px">{{ customer.info.email}}</span>
+        </td>
+        <td>
+          {{ customer.occupation }}
+        </td>
+        <td>
+          {{ customer.Balance | money}}
+        </td>
+        <td>
+          {{ customer.income | money }}
+        </td>
+        <td (click)="openSuggestion()" [pTooltip]="getToolTip(customer.status)" tooltipPosition="top">
+          <app-progress-bar [currentPoint]=customer.status></app-progress-bar>
+        </td>
+        <td>
+          <div class="actions" style="display: flex">
+            <i class="pi pi-pencil" style="font-size: 1.15rem; margin-right: 10px"></i>
+            <i class="pi pi-trash" style="font-size: 1.15rem"></i>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

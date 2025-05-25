@@ -1,0 +1,8 @@
+<div class="progress-container">
+  <div
+    class="progress-bar"
+    [style.width.%]="(currentPoint / maxPoints) * 100"
+    [style.background]="getProgressColor()"
+  >
+  </div>
+</div>
